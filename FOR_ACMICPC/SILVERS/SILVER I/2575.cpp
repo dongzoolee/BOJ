@@ -14,25 +14,39 @@ using ll = long long;
 vector<int> v;
 int main() {
 	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-	int m;
+	ll m;
 	cin >> m;
 
 	//A 
-
-	
-
-	//B 소인수분해
-	int tmp = m;
-	for (int i = 2; i <= tmp; i++) {
-		int cnt = 0;
-		while (tmp % i == 0){
-			tmp /= i;
-			cnt++;
-			if (cnt == 1)
-				v.push_back(i);
-		}
+	if (m % 3 == 0) {
+		cout << m / 3;
+	}
+	else {
+		cout << m / 3 + 1;
 	}
 
-	cout << " " << v.size();
 
+	//B 소인수분해
+	int tmp = m, cnt = 0;
+	for (int i = 2; i <= tmp; i++) {
+		while (tmp % i == 0) {
+			if (i == 2)cnt++;
+			tmp /= i;
+			v.push_back(i);
+		}
+	}
+	
+
+	if (v.size() != 0) {
+		if (cnt >= 2) {
+			if (cnt % 2 == 0)
+				cout << " " << v.size() - cnt / 2;
+			else
+				cout << " " << v.size() - cnt + cnt / 2 + 1;
+		}
+		else
+			cout << " " << v.size();
+	}
+	else
+		cout << " " << 1;
 }
