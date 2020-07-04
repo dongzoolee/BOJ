@@ -244,10 +244,13 @@
     <ClCompile Include="SILVERS\SILVER I\1992.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="SILVERS\SILVER I\2575.cpp" />
+    <ClCompile Include="SILVERS\SILVER I\2575.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">yes</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="SILVERS\SILVER I\2859.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">yes</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="SILVERS\SILVER I\4379.cpp" />
     <ClCompile Include="SILVERS\SILVER I\7576.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
