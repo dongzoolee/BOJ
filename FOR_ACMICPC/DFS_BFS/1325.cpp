@@ -19,7 +19,7 @@ void DFS(long long num, bool* chkr) {
 	if (chk[num] == 1 || chkr[num] == 1) return;
 	chkr[num] = 1;
 	chk[num] = 1;
-	for (long longf = 0; f < vec[num].size() && chkr[vec[num][f]] != 1; f++) {
+	for (long long f = 0; f < vec[num].size() && chkr[vec[num][f]] != 1; f++) {
 		leaves[num]++;
 		DFS(vec[num][f],chkr);
 		leaves[num] += leaves[vec[num][f]];
