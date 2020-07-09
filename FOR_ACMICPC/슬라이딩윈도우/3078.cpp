@@ -19,7 +19,7 @@ int main(void) {
 	cin >> N >> K;
 	queue <int> q;
 	for (int i = 0; i < N; i++) {
-		cin >> str;
+		cin >> str
 		vec.push_back(str.length());
 		if (i <= K) {
 			q.push(vec[i]);
