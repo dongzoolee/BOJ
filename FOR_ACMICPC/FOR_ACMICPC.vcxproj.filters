@@ -456,6 +456,9 @@
     <ClCompile Include="GOLDS\GOLD 5\2174.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="GOLDS\GOLD 5\1405.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
