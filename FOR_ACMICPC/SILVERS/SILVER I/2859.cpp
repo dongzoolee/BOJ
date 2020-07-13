@@ -10,8 +10,11 @@
 #include <malloc.h>
 #include <limits.h>
 using namespace std;
-using longs = long long;
-longs cur[2] = { 0 }, per[2] = { 0 };
+using ll = long long;
+ll cur[2] = { 0 }, per[2] = { 0 };
+ll gcd(ll k, ll l) { return l ? gcd(l, k%l) : k; }
+ll lcm(ll k, ll l) { return k / gcd(k, l)*l; }
+
 int main() {
 	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 	string str;
@@ -31,7 +34,7 @@ int main() {
 		}
 	}
 
-	longs a, b, c, d;
+	ll a, b, c, d;
 	if (cur[0] < cur[1])
 		a = 0;
 	else
@@ -42,13 +45,17 @@ int main() {
 			cout << "Never";
 			exit(0);
 		}
+		else if (lcm(per[1 - a], per[a]) < per[1 - a] * i + cur[1-a]) {
+			cout << "Never";
+			exit(0);
+		}
 		if ((b + per[1 - a] * i) % per[a] == 0) {
 			c = i;
 			d = (b + per[1 - a] * i) / per[a];
 			break;
 		}
 	}
-	longs location = cur[1 - a] + per[1 - a] * c, temp = location, cnt = 0, final_h = 0, final_m= 0;
+	ll location = cur[1 - a] + per[1 - a] * c, temp = location, cnt = 0, final_h = 0, final_m= 0;
 	while (1) {
 		if (temp < 1440) {
 			final_h = temp / 60;
@@ -79,7 +86,7 @@ int main() {
 	if (final_h == 0) {
 		cout << "00";
 	}
-	else if ((longs)log10(final_h) + 1 == 1) {
+	else if ((ll)log10(final_h) + 1 == 1) {
 		cout << "0" << final_h;
 	}
 	else {
@@ -90,7 +97,7 @@ int main() {
 	if (final_m == 0) {
 		cout << "00";
 	}
-	else if ((longs)log10(final_m) + 1 == 1) {
+	else if ((ll)log10(final_m) + 1 == 1) {
 		cout << "0" << final_m;
 	}
 	else {
