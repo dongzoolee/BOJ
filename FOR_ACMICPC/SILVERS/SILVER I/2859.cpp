@@ -27,10 +27,10 @@ int main() {
 			cur[t] += (str[4] - '0');
 		}
 		else {
-			per[t-2] += (str[0] - '0') * 10 * 60;
-			per[t-2] += (str[1] - '0') * 60;
-			per[t-2] += (str[3] - '0') * 10;
-			per[t-2] += (str[4] - '0');
+			per[t - 2] += (str[0] - '0') * 10 * 60;
+			per[t - 2] += (str[1] - '0') * 60;
+			per[t - 2] += (str[3] - '0') * 10;
+			per[t - 2] += (str[4] - '0');
 		}
 	}
 
@@ -40,12 +40,13 @@ int main() {
 	else
 		a = 1;
 	b = cur[1 - a] - cur[a];
+	ll llcm = lcm(per[1 - a], per[a]);
 	for (int i = 1;; i++) {
 		if (per[1 - a] == per[a]) { // 별 두개가 안만날 조건 못 찾음 ㅜㅜㅜㅜㅜㅜ
 			cout << "Never";
 			exit(0);
 		}
-		else if (lcm(per[1 - a], per[a]) < per[1 - a] * i + cur[1-a]) {
+		else if (llcm < per[1 - a] * i + cur[1 - a] && llcm < per[a] * i + cur[a]) {
 			cout << "Never";
 			exit(0);
 		}
@@ -55,7 +56,7 @@ int main() {
 			break;
 		}
 	}
-	ll location = cur[1 - a] + per[1 - a] * c, temp = location, cnt = 0, final_h = 0, final_m= 0;
+	ll location = cur[1 - a] + per[1 - a] * c, temp = location, cnt = 0, final_h = 0, final_m = 0;
 	while (1) {
 		if (temp < 1440) {
 			final_h = temp / 60;
