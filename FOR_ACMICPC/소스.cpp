@@ -10,14 +10,15 @@
 #include <malloc.h>
 #include <limits.h>
 using namespace std;
-using longs = long long;
+using ll = long long;
 
-void bt() {
-
-}
 int main() {
 	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-	int n;
-	cin >> n;
-
+	FILE* output;
+	output = fopen("input.txt", "w");
+	fprintf(output, "100000\n");
+	for (int i = -50000; i <=50000; i++) {
+		if(i!=0)
+		fprintf(output, "%d ", i);
+	}
 }
