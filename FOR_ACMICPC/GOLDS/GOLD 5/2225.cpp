@@ -31,15 +31,5 @@ int main() {
 			dp[i][h] %= 1000000000;
 		}
 	}
-	/*
-	for (ll k = 2; k <= 200; k++) {
-		for (ll n = 0; n <= 200; n++) {
-			for (ll l = 0; l <= n; l++) {
-				dp[k][n] += dp[k - 1][l];
-			}
-		}
-	}
-	*/
-
 	cout << dp[n][k];
 }

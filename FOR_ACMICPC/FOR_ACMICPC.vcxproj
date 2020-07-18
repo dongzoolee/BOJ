@@ -172,6 +172,7 @@
     <ClCompile Include="GOLDS\GOLD 5\13908.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="GOLDS\GOLD 5\17140.cpp" />
     <ClCompile Include="GOLDS\GOLD 5\17828.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">yes</ExcludedFromBuild>
     </ClCompile>
