@@ -23,7 +23,7 @@ int find(int u) {
 	return par[u] = find(par[u]);
 }
 void merge(int u, int v) {
-	u = find(u), v = find(v);
+	u = par[u], v = find(v);
 
 	if (u == v) return;
 	par[u] = v;
