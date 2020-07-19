@@ -471,6 +471,12 @@
     <ClCompile Include="GOLDS\GOLD 5\17140.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\문서\GitHub\BOJ\Project16\1197.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GOLDS\GOLD 4\1976.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
