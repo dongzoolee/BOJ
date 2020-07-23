@@ -50,7 +50,6 @@ int main() {
 	}
 	sort(vec.begin(), vec.end());
 	init();
-
 	for (int i = 0; i < e; i++) { // 간선 돌기
 		if (find(vec[i].second.first) == find(vec[i].second.second)) { // 엄마가 같니?
 			// 만약 같다면 
