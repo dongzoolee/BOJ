@@ -513,11 +513,39 @@
     <ClCompile Include="PLATINUM\2357.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="GOLDS\GOLD 3\11066.cpp">
+    <ClCompile Include="GOLDS\GOLD 3\11437.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GOLDS\GOLD 3\1167.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GOLDS\GOLD 3\10159.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GOLDS\GOLD 2\2250.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GOLDS\GOLD 3\7579.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GOLDS\GOLD 4\18109.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SILVERS\SILVER 4\10025.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SPC\18111.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SILVERS\SILVER 2\2841.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GOLDS\GOLD 3\2263.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
+    <Text Include=".editorconfig.txt" />
   </ItemGroup>
 </Project>
