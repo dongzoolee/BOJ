@@ -1,33 +1,29 @@
-﻿#include <iostream>
-#include <string>
-#include <queue>
-#include <stack>
-#include <algorithm>
-#include <cstring>
-#include <math.h>
-#include <vector>
-#include <malloc.h>
-#include <limits.h>
-#include <tuple>
-#include <numeric>
+﻿#include<iostream>
+#include<algorithm>
+#include<vector>
 using namespace std;
 using ll = long long;
+int cost[3], wei[3];
+vector<double>ga;
 int main() {
-	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-	int n, k;
-	cin >> n >> k;
-	queue<int>q;
-	for (int i = 1; i <= n; i++) q.push(i);
-	cout << '<';
-	while (!q.empty()) {
-		for (int i = 0; i < k-1; i++) {
-			q.push(q.front());
-			q.pop();
+	ios::sync_with_stdio(0), cin.tie(0);
+	int n = 3;
+	ga.resize(3);
+	while (n--) {
+		cin >> cost[n] >> wei[n];
+		if (cost[n] * 10 >= 5000) {
+			ga[n] = double(wei[n] * 10) / (cost[n] * 10 - 500);
 		}
-
-		cout << q.front();
-		q.pop();
-		if (q.size() >= 1) cout << ", ";
-		else cout << '>';
+		else {
+			ga[n] = double(wei[n] * 10) / (cost[n] * 10);
+		}
 	}
+	double mx = max_element(ga.begin(), ga.end()) - ga.begin();
+	if (mx == 0)
+		cout << 'U';
+	if (mx == 1)
+		cout << 'N';
+	if (mx == 2)
+		cout << 'S';
+
 }

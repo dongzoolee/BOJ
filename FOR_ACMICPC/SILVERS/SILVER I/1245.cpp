@@ -1,127 +1,54 @@
 #include <iostream>
-#include <string>
-#include <queue>
-#include <stack>
+#include <deque>
 #include <algorithm>
 #include <cstring>
-#define _USE_MATH_DEFINES
 #include <math.h>
 #include <vector>
-#include <malloc.h>
-#include <limits.h>
 using namespace std;
-using longs = long long;
-int arr[102][77], n, m, cnt = 0;
-bool checker[102][77] = { 0 };
-
+using ll = long long;
+int arr[102][72], n, m, cnt = 0;
+bool chk[102][72] = { 0 };
+int dy[] = { 0,1,1,1,0,-1,-1,-1 };
+int dx[] = { 1,1,0,-1,-1,-1,0,1 };
 void bfs() {
-
 	for (int i = 0; i < n; i++)
 		for (int f = 0; f < m; f++) {
-
-			if (checker[i][f]) continue;
-
-			queue<pair<int, int>>q;
-			q.push({ i,f });
-			checker[i][f] = 1;
-			bool bong = 0;
+			if (chk[i][f]) continue;
+			bool no = 0;
+			deque<pair<int, int>>q;
+			q.push_back({ i,f });
+			chk[i][f] = 1;
+			if (!arr[i][f]) continue; // 0은 걸러
 			int og = arr[i][f];
-
 			while (!q.empty()) {
-				int x = q.front().second, y = q.front().first, xy = arr[y][x];
-				q.pop();
-				if (x + 1 < m) {
-					if (y + 1 < n) {
-						if (arr[y + 1][x + 1] <= xy && checker[y + 1][x + 1] == 0) {
-							checker[y + 1][x + 1] = 1;
-							q.push({ y + 1, x + 1 });
-						}
-						else if (arr[y + 1][x + 1] <= xy) {}
-						else if (arr[y + 1][x + 1] > og) { // 스타트지점보다 크다면
-							bong = 1;
-						}
-					}
-					if (y - 1 >= 0) {
-						if (arr[y - 1][x + 1] <= xy && checker[y - 1][x + 1] == 0) {
-							checker[y - 1][x + 1] = 1;
-							q.push({ y - 1, x + 1 });
-						}
-						else if (arr[y - 1][x + 1] <= xy) {}
-						else if (arr[y - 1][x + 1] > og) {
-							bong = 1;
-						}
-					}
-					if (arr[y][x + 1] <= xy && checker[y][x + 1] == 0) {
-						checker[y][x + 1] = 1;
-						q.push({ y, x + 1 });
-					}
-					else if (arr[y][x + 1] <= xy) {}
-					else if (arr[y][x + 1] > og) {
-						bong = 1;
-					}
-				}
+				int xx = q.front().second, yy = q.front().first, xy = arr[yy][xx];
+				q.pop_front();
 
-				if (x - 1 >= 0) {
-					if (y + 1 < n) {
-						if (arr[y + 1][x - 1] <= xy && checker[y + 1][x - 1] == 0) {
-							checker[y + 1][x - 1] = 1;
-							q.push({ y + 1, x - 1 });
-						}
-						else if (arr[y + 1][x - 1] <= xy) {}
-						else if (arr[y + 1][x - 1] > og) {
-							bong = 1;
-						}
-					}
-					if (y - 1 >= 0) {
-						if (arr[y - 1][x - 1] <= xy && checker[y - 1][x - 1] == 0) {
-							checker[y - 1][x - 1] = 1;
-							q.push({ y - 1, x - 1 });
-						}
-						else if (arr[y - 1][x - 1] <= xy) {}
-						else if (arr[y - 1][x - 1] > og) {
-							bong = 1;
-						}
-					}
-					if (arr[y][x - 1] <= xy && checker[y][x - 1] == 0) {
-						checker[y][x - 1] = 1;
-						q.push({ y, x - 1 });
-					}
-					else if (arr[y][x - 1] <= xy) {}
-					else if (arr[y][x - 1] > og) {
-						bong = 1;
-					}
-				}
-				if (y + 1 < n) {
-					if (arr[y + 1][x] <= xy && checker[y + 1][x] == 0) {
-						checker[y + 1][x] = 1;
-						q.push({ y + 1, x });
-					}
-					else if (arr[y + 1][x] <= xy) {}
-					else if (arr[y + 1][x] > og) {
-						bong = 1;
-					}
-				}
-				if (y - 1 >= 0) {
-					if (arr[y - 1][x] <= xy && checker[y - 1][x] == 0) {
-						checker[y - 1][x] = 1;
-						q.push({ y - 1, x });
-					}
-					else if (arr[y - 1][x] <= xy) {}
-					else if (arr[y - 1][x] > og) {
-						bong = 1;
-					}
-				}
+				for (int x = 0; x < 8; x++) {
+					if (yy + dy[x] < 0 || yy + dy[x] >= n || xx + dx[x] < 0 || xx + dx[x] >= m) continue;
+					if (chk[yy + dy[x]][xx + dx[x]]) continue;
 
+					if (arr[yy + dy[x]][xx + dx[x]] > xy && og >= arr[yy + dy[x]][xx + dx[x]]) {
+
+					}
+					if (arr[yy + dy[x]][xx + dx[x]] > xy && og < arr[yy + dy[x]][xx + dx[x]]) {
+						no = 1;
+					}
+					if (arr[yy + dy[x]][xx + dx[x]] <= xy) {
+						chk[yy + dy[x]][xx + dx[x]] = 1;
+						q.push_back({ yy + dy[x], xx + dx[x] });
+					}
+				}
+				if (no == 0 && q.empty())
+					cnt++;
 			} // end of while
-			if (bong == 0)
-				cnt++;
 		}
 }
 
 int main() {
 	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+	freopen("input.txt", "r", stdin);
 	cin >> n >> m;
-
 	for (int i = 0; i < n; i++)
 		for (int f = 0; f < m; f++)
 			cin >> arr[i][f];
