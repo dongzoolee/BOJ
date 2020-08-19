@@ -12,25 +12,47 @@
 #include<numeric>
 using namespace std;
 using ll = long long;
+vector<int>v;
+int cnt = 0;
+bool chk[500001];
+int n;
+void pushing(vector<int>vec) {
+	memset(chk, 0, sizeof(chk));
+	vector<int>ret;
+	int frt = 0, bk = 1;
+	while (bk < vec.size()) {
+		if (vec[frt] > vec[bk]) {
+			ret.push_back(vec[bk]);
+			frt = bk++;
+			cnt++;
+		}
+		else {
+			frt = bk++;
+		}
+	}
+	if (vec.size() > 1 && vec[vec.size() - 2] <= vec[vec.size() - 1]) {
+		ret.push_back(vec[vec.size() - 1]);
+	}
+	if (ret.size() == vec.size()) {
+		return;
+	}
+	else {
+		return pushing(ret);
+	}
+}
 int main() {
 	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-    int n;
-    
-    cin >> n;
-    for (int i = 1; i <= n; i++)
-        cin >> a[i];
-    bool change = false;
-    for (int i = 1; i <= n + 1; i++) {
-        change = false;
-        for (int j = 1; j <= n - i; j++) {
-            if (a[j] > a[j + 1]) {
-                change = true;
-                swap(a[j], a[j + 1]);
-            }
-        }
-        if (change == false) {
-            cout << i << '\n';
-            break;
-        }
-    }
+	cin >> n;
+	int a;
+	for (int i = 0; i < n; i++) {
+		cin >> a;
+		v.push_back(a);
+	}
+	if (v.size() > 1) {
+		pushing(v);
+		cout << cnt + 1;
+	}
+	else {
+		cout << 1;
+	}
 }
