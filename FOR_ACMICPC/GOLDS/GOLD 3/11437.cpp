@@ -4,7 +4,6 @@
 #include <stack>
 #include <algorithm>
 #include <cstring>
-#define _USE_MATH_DEFINES
 #include <math.h>
 #include <vector>
 #include <malloc.h>
@@ -14,10 +13,7 @@
 using namespace std;
 using ll = long long;
 int n, m;
-vector<int>tree[50001];
-int par[50001][21], dep[50001];
-int chk[50001] = { 0 };
-void dfs(int idx, int depth) {
+void dfs(int idx, int depth, vector<int>tree[10001], int chk[10001], int dep[10001], int par[][21]) {
 	if (chk[idx]) return;
 
 	chk[idx] = 1;
@@ -25,15 +21,15 @@ void dfs(int idx, int depth) {
 	for (int i = 0; i < tree[idx].size(); i++) {
 		if (chk[tree[idx][i]]) continue;
 		par[tree[idx][i]][0] = idx;
-		dfs(tree[idx][i], depth + 1);
+		dfs(tree[idx][i], depth + 1, tree, chk, dep, par);
 	}
 }
-void parent() {
+void parent(int par[][21]) {
 	for (int f = 1; f < 21; f++)
 		for (int i = 1; i <= n; i++)
 			par[i][f] = par[par[i][f - 1]][f - 1];
 }
-int lca(int a, int b) {
+int lca(int a, int b, int par[][21], int dep[10001]) {
 	// 같은 depth로 맞춰주기
 	if (dep[a] < dep[b]) //  무조건 a가 크게
 		swap(a, b);
@@ -57,21 +53,25 @@ int lca(int a, int b) {
 int main() {
 	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 	//freopen("input.txt", "r", stdin);
-	cin >> n;
-	int a, b;
-	for (int i = 0; i < n - 1; i++) {
-		cin >> a >> b;
-		tree[a].push_back(b);
-		tree[b].push_back(a);
-	}
-	// par & depth init
-	dfs(1, 0);
-	// parentsss init
-	parent();
-	// to find
-	cin >> m;
-	for (int f = 0; f < m; f++) {
-		cin >> a >> b;
-		cout << lca(a, b) << '\n';
+	int tc;
+	cin >> tc;
+	while (tc--) {
+		vector<int>tree[10001];
+		int par[10001][21] = { 0 }, dep[10001] = { 0 };
+		int chk[10001] = { 0 };
+		cin >> n;
+		int a, b;
+		for (int i = 0; i < n - 1; i++) {
+			cin >> a >> b;
+			tree[a].push_back(b);
+			tree[b].push_back(a);
+		}
+		// par & depth init
+		dfs(1, 0, tree, chk, dep, par);
+		// parentsss init
+		parent(par);
+		// to find
+			cin >> a >> b;
+			cout << lca(a, b, par, dep) << '\n';
 	}
 }
