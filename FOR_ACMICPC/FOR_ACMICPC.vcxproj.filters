@@ -255,9 +255,6 @@
     <ClCompile Include="슬라이딩윈도우\3078.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="소스.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="DFS_BFS\1260.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -991,6 +988,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="CODEFORCES\a.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="대학별\AJU\a.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="이분탐색\2470.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

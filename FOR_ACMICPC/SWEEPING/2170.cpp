@@ -3,22 +3,32 @@
 #include<vector>
 using namespace std;
 using ll = long long;
-vector<pair<int, int>>v;
+int n, m;
+struct seg {
+	vector<int>seg;
+	int base;
+	void init() {
+		for (base = 1; base < n; base *= 2);
+		seg.resize(base * 2);
+		for (int i = base; i < base + n; i++)
+			seg[i] = 1;
+		seg[base + n] = 0;
+		for (int i = base - 1; i > 0; i--)
+			seg[i] = seg[i * 2] + seg[i * 2 + 1];
+	}
+	void update(int l, int r) {
+		l += base, r += base;
+		
+	}
+};
 int main() {
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-
-	int n, a, b;
-	cin >> n;
-	while (n--) {
+	cin >> n >> m;
+	seg tree;
+	tree.init();
+	int a, b;
+	while (m--) {
 		cin >> a >> b;
-		v.push_back({ a,b });
+		tree.update(a, b);
 	}
-	sort(v.begin(), v.end());
-	ll s = -1000000001, ans = 0;
-	for (int i = 0; i < v.size(); i++) {
-		if (s < v[i].first) s = v[i].first;
-		if (v[i].second <= s) continue;
-		ans += v[i].second - s; s = v[i].second;
-	}
-	cout << ans;
 }

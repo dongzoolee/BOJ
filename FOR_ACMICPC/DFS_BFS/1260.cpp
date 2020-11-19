@@ -32,7 +32,8 @@ void BFS(int num) {
 	checker[num] = 1;
 
 	while (!q.empty()) {
-		int x = q.front();
+		int x = q.
+			();
 		cout << x << " ";
 		q.pop();
 		for (int i = 0; i < vec[x].size(); i++)
